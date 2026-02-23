@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate – Wonderkid2Legend Facepack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-visual">
+      <div class="header-bg header-bg-left" role="presentation"></div>
+      <a href="index.html">
+        <img src="assets/feather_logo.png" alt="Wonderkid2Legend" class="header-logo" />
+      </a>
+      <div class="header-bg header-bg-right" role="presentation"></div>
+    </div>
+    <nav class="nav-bar" aria-label="Main">
+      <div class="container nav-inner">
+        <a href="index.html#home" class="nav-link">HOME</a>
+        <a href="index.html#examples" class="nav-link">EXAMPLES</a>
+        <a href="index.html#download" class="nav-link">DOWNLOAD</a>
+        <a href="index.html#instructions-content" class="nav-link">INSTRUCTIONS</a>
+        <a href="index.html#roadmap" class="nav-link">COMING SOON</a>
+        <a href="donate.html" class="nav-link">DONATE</a>
+      </div>
+    </nav>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="section section-donate">
+      <div class="container">
+        <h1 class="section-title section-title-lined">Buy me a beer</h1>
+        <p class="section-lead">Thank you so much for your tip — it really means a lot. Your support goes straight to hosting and GPU time so I can keep generating more (and better) faces for the pack. Cheers, and enjoy the facepack.</p>
+        <div class="donate-cards">
+          <div class="card donate-option">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h2 class="card-title">Cash (Ko-fi)</h2>
+            <p class="card-desc">Donate with card or PayPal via Ko-fi. No account required for one-time tips.</p>
+            <a href="https://ko-fi.com/wonderkid2legend" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <span>Donate on Ko-fi</span>
+              <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <div class="card donate-option">
+            <div class="card-icon donate-option-btc-icon" aria-hidden="true">
+              <img src="assets/icons/bitcoin.png" alt="" width="40" height="40" />
+            </div>
+            <h2 class="card-title">Bitcoin</h2>
+            <p class="card-desc">Send BTC to the address below. Replace with your own address before publishing.</p>
+            <div class="donate-btc">
+              <code class="donate-btc-address" id="btc-address" title="Bitcoin address">bc1q2t8j2svua9m74pw4ra3e0qx3lvc56g67d6javr</code>
+              <button type="button" class="btn btn-secondary donate-btc-copy" data-copy-btc aria-label="Copy Bitcoin address">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2024, Wonderkid2Legend Facepack (FM 24). All rights reserved.</p>
+      <p class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <span class="footer-sep">|</span>
+        <a href="#">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <a href="donate.html" class="donate-card donate-card-active" aria-label="Donate – Buy me a beer">
+    <span class="donate-card-icons" aria-hidden="true">
+      <img class="donate-card-icon" src="assets/icons/beer.png" alt="" width="28" height="28" />
+      <img class="donate-card-icon" src="assets/icons/dollar.png" alt="" width="28" height="28" />
+      <img class="donate-card-icon" src="assets/icons/bitcoin.png" alt="" width="26" height="26" />
+    </span>
+    <span class="donate-card-label">Buy me a beer</span>
+    <span class="donate-card-cta">Donate</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var btn = document.querySelector('[data-copy-btc]');
+      var addressEl = document.getElementById('btc-address');
+      if (!btn || !addressEl) return;
+      btn.addEventListener('click', function () {
+        var address = addressEl.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(address).then(function () {
+            btn.textContent = 'Copied!';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+          });
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = address;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+            btn.textContent = 'Copied!';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+          } finally {
+            document.body.removeChild(ta);
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
